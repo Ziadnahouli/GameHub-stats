@@ -39,7 +39,7 @@ def dashboard():
     conn = sqlite3.connect(DB_FILE)
     c = conn.cursor()
     now = time.time()
-    online_users = c.execute("SELECT COUNT(*) FROM users WHERE last_seen > ?", (now - 300,)).fetchone()[0]
+    online_users = c.execute("SELECT COUNT(*) FROM users WHERE last_seen > ?", (now - 45,)).fetchone()[0]
     total_users = c.execute("SELECT COUNT(*) FROM users").fetchone()[0]
     conn.close()
     
@@ -55,3 +55,4 @@ if __name__ == '__main__':
     # LISTEN ON ALL INTERFACES
     print("Server running on http://127.0.0.1:10000")
     app.run(host='0.0.0.0', port=10000)
+
